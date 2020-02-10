@@ -96,10 +96,12 @@ extension ViewController {
     
     func addHeaderViewGif() {
         let displayWidth: CGFloat! = self.view.frame.width
-        myHeaderView.subviews[1].removeFromSuperview()
         let image = UIImageView(frame: CGRect(x: (displayWidth-100)/2, y: 100, width: 100, height: 100))
         image.loadGif(name: "bili")
         myHeaderView.addSubview(image)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.myHeaderView.subviews[1].removeFromSuperview()
+        }
     }
 }
 
