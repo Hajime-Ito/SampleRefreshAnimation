@@ -35,7 +35,7 @@ class ViewController: UIViewController, TableViewDD {
     
     @objc func refresh(sender: UIRefreshControl) {
         self.addHeaderViewGif()
-        myTableView.contentInset.top = 130 //ヘッダーの分下げる
+        myTableView.contentInset.top = 130
         sender.endRefreshing()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             UIView.animate(withDuration: 0.5, delay: 0.0, options: [],animations: {
@@ -94,12 +94,12 @@ extension ViewController {
         myHeaderView.addSubview(image)
     }
     
-    func addHeaderViewGif() {
+    private func addHeaderViewGif() {
         let displayWidth: CGFloat! = self.view.frame.width
         let image = UIImageView(frame: CGRect(x: (displayWidth-100)/2, y: 100, width: 100, height: 100))
         image.loadGif(name: "bili")
         myHeaderView.addSubview(image)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.myHeaderView.subviews[1].removeFromSuperview()
         }
     }
